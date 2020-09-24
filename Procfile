@@ -1,0 +1,1 @@
+web: gunicorn newdjango.wsgi --log-file -
