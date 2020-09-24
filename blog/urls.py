@@ -10,7 +10,7 @@ urlpatterns = [
     path('article-titles', ArticleListView2.as_view(), name ='article-titles'),
     path('article-api', articlesApi, name ='article-api'),
     path('article-detail-api/<int:pk>/', articleDetailApi, name ='article-detail-api'),
-     path('article-home', ArticleListViewHome.as_view(), name ='article-home'),
+     path('', ArticleListViewHome.as_view(), name ='article-home'),
      path('article-admin', ArticleListViewHome2.as_view(), name ='article-admin'),
 
     ]
