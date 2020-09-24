@@ -59,10 +59,7 @@
         <span class ="hello-msg" > Hello,{{ request.user }}</span>
         
         <a class="nav-link" href="{% url 'logout'%}">log out</a>
-  {%else%}
-        <li class="nav-item active">
-          <a class="nav-link" href="{% url 'about' %}">About </a>
-        </li>
+ 
 
   {% endif %}  
  
