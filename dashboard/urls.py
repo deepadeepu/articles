@@ -23,7 +23,7 @@ urlpatterns = [
     path('profile-settings/',views.profile_settings,name='profile-settings'),
     path('excel/',views.downloadExcel,name='excel'),
     path('pdf/',views.some_view,name='pdf'),
-    path('',views.home,name='home'),
+    
     path('article',views.ArticleListView2, name ='article'),
     path('about/',views.about, name ='about'),
 
