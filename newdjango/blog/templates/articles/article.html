@@ -1,0 +1,197 @@
+{% include 'navbar2.html' %}
+{% block content %}
+
+    <style>
+.container4 {
+    height:700px;
+    margin-right: 20px;
+    margin-left: 20px;
+    color: white;
+    text-align: center;
+    font-family: sans-serif;
+    margin-bottom: 5px;
+    overflow: hidden;
+}
+
+.container6{
+    height:50px;
+    width: 50px;
+    border-radius: 40 50 40 50;
+    border: 2;
+    border-color: coral;
+    background-color: cornsilk;
+}
+
+  
+    h1,h2,h3,h4,h5,p,span,strike{
+       font-family: cursive;
+       
+    }
+    #task-container{
+        max-width:600px;
+        margin:0;
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25),0 10px 10px rgba(0,0,0,0.22);
+        background-color: #fff;
+        margin-top: 10px;
+        margin-bottom: 100px;
+        justify-content: space-around;
+        align-items: flex-start;
+        overflow: hidden;
+    }
+    #form-wrapper{
+        position: -webkit-sticky;
+        position: sticky;
+        top:0rem;
+        border-bottom: 1px solid #e05e5e;
+        background-color: #fff;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+        padding: 40px;
+    }
+    #form-wrapper2{
+        position: -webkit-sticky;
+        position: sticky;
+        top:0rem;
+        border-bottom: 1px solid #b32c2c;
+        background-color: #fff;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+        padding: 20px;
+        color: black;
+    }
+    #submit{
+        background-color: #36d9b6;
+        border-radius: 0;
+        border: 0;
+        color:white;
+
+    }
+
+    .flex-wrapper{
+        display: flex;
+    }
+    .task-wrapper{
+        margin:5px;
+        padding: 5px;
+        padding: 20px;
+        cursor: pointer;
+        border-bottom: 1px solid #e9e9e9;
+        color: #686868;
+    }
+   
+</style>
+</head>
+<body>
+
+
+   
+ 
+
+<div class="container4">
+       <div class="row">
+          
+            
+            <div class="col-4" style="background-color:brown;">
+                <div id="task-container">
+                    <div id ='form-wrapper'> 
+                        
+                      <form id="form">
+                          <div class="flex-wrapper">
+                              <div style="flex:9;color: black;">
+                               <h3> Articles</h3>  
+                              
+                              </div>
+                              
+                              <div style="flex:1">
+                               
+                              </div> 
+                         
+                          </div> 
+                          
+                      </form>
+                    
+                  
+                    </div>
+                    
+                    {% for instance in object_list %}
+                    <div id="form-wrapper2">
+                        <div style="flex:6">
+                      
+            
+                     <p style="color: blue;">    {{ instance.title}} - by {{ instance.author}} </p> 
+                        
+                      
+                    </div> 
+                </div>
+                  {% endfor %}
+                    <div id="list-wrapper">
+                       
+                          
+                  </div>
+                  <br><br>
+            {%if  not request.user.is_active %}
+                  <p style="color:black">Already have an account? <a href="{% url 'login' %}">Login</a></p>
+                     
+                      <p style="color:black"> Don't have an account? <a href="{% url 'register'%}">Sign Up</a>
+                      </p>
+            {% endif %}
+                      <br>
+                      </div>
+               
+                   </style>
+               
+                   
+                
+           </div>
+               
+               <div class="col-8"  id ="cntr-8" style="background-color:black;color: chartreuse;text-align: center;">
+                <br><br><br>
+            {%if  not request.user.is_active %}
+                <br>
+                <a href="{% url 'register'%}" ><h1>Create an Account?</h1></a>
+                <br><br><br>
+                <h1>Create your own Article</h1>
+                <br><br><br>
+                <h1> Already have an account? <a href="{% url 'login' %}">Login</a></h1>
+                <br><br><br>
+            {%else%}
+                <h1>How are you , {{user}}</h1>
+            
+            {% endif %}   
+                    
+                <button class= "container6"  id="blue8" onclick="myFunction1()" style="background-color: rgb(211, 117, 206);"></button>
+                <button class= "container6" id="yellow" onclick="myFunction2()" style="background-color:darkgoldenrod;"></button>
+                <button class= "container6" id="green" onclick="myFunction3()" style="background-color:rgb(89, 224, 89);"></button>
+                <button class= "container6" id="red" onclick="myFunction4()" style="background-color:rgb(241, 133, 133);"></button>
+                <br><br><br>
+
+               
+            
+        </div>
+           
+       </div>
+    
+    </div>
+<script>
+    function myFunction1() {
+       
+               document.getElementById("cntr-8").style.backgroundColor = "rgb(211, 117, 206)";
+    }
+    function myFunction2() {
+       
+          document.getElementById("cntr-8").style.backgroundColor = "darkgoldenrod";
+}
+function myFunction3() {
+   
+       document.getElementById("cntr-8").style.backgroundColor = "rgb(89, 224, 89)";
+}
+function myFunction4() {
+       
+   
+       document.getElementById("cntr-8").style.backgroundColor = "rgb(241, 133, 133)";
+}
+      </script>
+   
+   
+
+
+{% endblock %}
+

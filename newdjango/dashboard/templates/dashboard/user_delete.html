@@ -1,0 +1,15 @@
+{% extends 'navbar2.html'  %}
+{% block content %}
+<style>
+  #form-wrap{
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+</style>
+<form action='' method="POST" id="form-wrap">{% csrf_token %}
+<h1>Are you sure to you want to  delete Account {{object.username}}?</h1>
+ <p></p> <input type="submit"  value="Delete" class="btn btn-info" />
+  <a href="{% url 'profile' %}" class="btn btn-warning">Cancel</a>
+</form>
+
+{% endblock %}

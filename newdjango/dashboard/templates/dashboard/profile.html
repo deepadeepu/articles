@@ -1,0 +1,40 @@
+{% extends 'navbar2.html'  %}
+{% block content %}
+
+
+<div class="card-group" id = "content">
+  {%for object in objects %}
+    {% if  user.username == object.username  %}
+        <div class="card,content" >
+          <img class="profile-pic" src="{{request.user.profile.profile_pic.url}}" >
+        </div>
+        <div class="card-footer" >
+       </div>
+        <div class="card" >
+          <table cellpadding ='5' cellpadding = '5'>
+
+          <tr>
+
+            <td>profile ID:
+              <td>{{ object.id}}</td></tr>
+              <tr>
+          <td>username:</td>
+            <td>{{ object.username}}</td></tr>
+          <tr><td>email:<td>
+          {{ object.email }}</td></tr>
+          <tr><td> phone:<td>
+          {{ object.phone }}</td></tr>
+
+          <tr><td>  Date Joined:</td> <td>  {{ object.date_created }}</td></tr>
+           </table>
+         </div>
+        <div class="card" style="text-align:center">
+          <a href="{% url 'profile-settings'%}" class="btn btn-info">Update</a>
+          <a href="{% url 'profile-delete' object.id %}" class="btn btn-warning">Delete</a>
+       </div>
+      </div>
+  {% endif %}
+{% endfor %}
+
+
+{% endblock %}

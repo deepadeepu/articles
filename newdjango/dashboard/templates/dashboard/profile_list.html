@@ -1,0 +1,80 @@
+{% extends 'navbar2.html'  %}
+
+{% block content%}
+<style>
+
+
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+</style>  
+
+<div class="row"><div class="col-sm">
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search" title="Type in a name"></div>
+<div class="col-sm"></div>
+<div class="col-sm"><a href="{% url 'excel'  %}"><img src="/images/excel.jpg" width="25px" height="25px"></a></div>
+<div class="col-sm"><a href="{% url 'pdf'  %}"><img src="/images/pdf.jpg" width="25px" height="25px"></a></div></div>
+  
+<br><br>
+<table id="example" border="2" cellpadding ='5' cellpadding = '5' width=80%;>
+
+  <thead>
+    <tr>
+
+      <th> id </th>
+
+      <th>   username </th>
+
+        <th>   email </th>
+          
+            <th>   Date joined </th>
+
+             
+  
+</tr>
+</thead>
+
+
+  {% for object in object_list %}
+   <tbody>
+      <tr>
+
+    <td>{{ object.id}}</td>
+    <td> <a href='{{object.get_absolute_url}}'>{{ object.username}}</a></td>
+      <td>{{ object.email}}</td>
+      <td>{{ object.date_created  }}</td>
+     </tr>
+    </tbody>
+  {% endfor %}
+
+
+</table>
+<script type="text/javascript">
+  function myFunction() {
+   var input, filter, table, tr, td, i, txtValue;
+   var x;
+   input = document.getElementById("myInput");
+   filter = input.value.toUpperCase();
+   table = document.getElementById("example");
+   tr = table.getElementsByTagName("tr");
+   for (i = 0; i < tr.length; i++) {
+     td = tr[i].getElementsByTagName("td")[1];
+     if (td) {
+       txtValue = td.textContent || td.innerText;
+       if (txtValue.toUpperCase().indexOf(filter) > -1) {
+         tr[i].style.display = "";
+       } else {
+         tr[i].style.display = "none";
+       }
+     }       
+   }
+  }
+ </script>
+{% endblock %}

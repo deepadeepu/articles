@@ -1,0 +1,48 @@
+{% extends 'navbar2.html'  %}
+{% block content %}
+<div class="card-group" id = "content">
+
+        <div class="card,content" >
+          <img class="profile-pic" src="{{request.user.profile.profile_pic.url}}" >
+        </div>
+        <div class=="card-footer"" >
+       </div>
+        <div class="card" >
+          <table cellpadding ='5' cellpadding = '5'>
+
+          <tr>
+
+            <td>profile ID:
+              <td>{{ object.id}}</td></tr>
+              <tr>
+          <td>username:</td>
+            <td>{{ object.username}}</td></tr>
+          <tr><td>email:<td>
+          {{ object.email }}</td></tr>
+          <tr><td> phone:<td>
+          {{ object.phone }}</td></tr>
+
+          <tr><td>  Date Joined:</td> <td>  {{ object.date_created }}</td></tr>
+           </table>
+         </div>
+        <div class="card" style="align:center;">
+          
+       </div>
+      </div>
+
+<br><br>
+<div class="card-group">
+
+    <div class="card-body">
+      <h5 class="card-title">work experience</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    </div>
+    <div class="card-footer">
+      
+    </div>
+  </div>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends 'navbar2.html'  %}
+
+{% block content%}
+<style>
+
+
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+</style>
+
+
+
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name"><br><br>
+<table id="example" border="5" cellpadding ='5' cellpadding = '5' width=80%;>
+  <thead>
+<tr>
+
+
+   <th> id </th>
+
+    <th>   username </th>
+
+      <th>   email </th>
+      {% if request.user.is_staff %}
+        <th>   password </th>
+
+          <th>   edit </th>
+            <th>  delete</th>
+       {% endif %}
+</tr>
+
+</thead>
+
+  {% for instance in object_list %}
+  <tbody>
+  <tr>
+
+ <td>{{ instance.id}}</td>
+  <!-- <td> <a href='{{get_absolute_url}}'>{{ instance.username}}</a></td> -->
+
+  <td>{{ instance.username}}</td>
+  <td>{{ instance.email}}</td>
+  {% if request.user.is_staff %}
+    <td>{{ instance.password }}</td>
+    <td><a href ="{% url 'user_update' instance.id %}"> update </a></td>
+    <td><a href ="{% url 'user-delete' instance.id %}"> delete </a></td></tr></tbody>
+  {% endif %}
+  {% endfor %}
+
+
+</table>
+<script type="text/javascript">
+ function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("example");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+ }
+</script>
+{% endblock %}

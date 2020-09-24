@@ -1,0 +1,92 @@
+{% extends 'navbar2.html'  %}
+{% block content %}
+
+     <style>
+         body{
+             background:rgb(54,217,182);
+             background: linear-gradient(90 deg,rgba(54,217,182,1)0%,
+             rgb(32, 152, 126,1)43%,rgba(0,212,255,1)100%);
+         }
+
+         h1,h2,h3,h4,h5,p,span,strike{
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            
+         }
+         #task-container{
+             
+             margin:0;
+             box-shadow: 0 14px 28px rgba(0,0,0,0.25),0 10px 10px rgba(0,0,0,0.22);
+             background-color: #fff;
+             margin-top: 20px;
+             margin-bottom: 100px;
+
+             justify-content: space-around;
+             align-items: flex-start;
+             margin-right: 20px;
+             margin-left: 20px;
+         }
+         #form-wrapper{
+             position: -webkit-sticky;
+             position: sticky;
+             top:0rem;
+             border-bottom: 1px solid #e9e9e9;
+             background-color: #fff;
+             box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+             padding: 40px;
+         }
+       
+         }
+
+         .flex-wrapper{
+             display: flex;
+         }
+         .task-wrapper{
+             margin:5px;
+             padding: 5px;
+             padding: 20px;
+             cursor: pointer;
+             border-bottom: 1px solid #e9e9e9;
+             color: #686868;
+         }
+
+     </style>
+</head>
+<body>
+   
+
+            <div id="task-container">
+              
+                    <div class="flex-wrapper">
+                        {% for instance in object_list %}
+                            {%if request.user == instance.author %}
+                       <div class="example-container">
+                            <div class="row" border="2">
+                                <div class="col-4" style="background-color:paleturquoise;">
+                                    <br>
+                                    <p> {{ instance.id }} - <a href='{{instance.get_absolute_url}}'>{{ instance.title}}</a></p>
+                                    <p>created by - {{ instance.author}}</p>
+                                    <a href="{% url 'article-update' instance.id %}" class="btn btn-warning">Update</a>
+                                    <a href="{% url 'article-delete' instance.id %}" class="btn btn-danger">Delete</a>
+                                    <a href="{% url 'article-create' %}" class="btn btn-info">Create</a>
+                                    <br><br>
+                                </div>
+                                <div class="col-8" style="background-color:thistle;text-align: center;">
+                                    <br>
+                                    <p>{{ instance.content}}</p>
+                                    <br><br>
+                                </div>
+                                    <br><br>
+                            </div>
+                            
+                        </div>
+                        <br>
+                            {%endif%}
+                        {% endfor %}
+                        
+                        </div>
+                  </div>
+                </div>
+            </div>
+        
+
+{% endblock %}

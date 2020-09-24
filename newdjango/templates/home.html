@@ -1,0 +1,86 @@
+{% include 'navbar2.html' %}
+{% block content %}
+
+    <style>
+.container4 {
+    height:700px;
+    margin-right: 20px;
+    margin-left: 20px;
+    background: black;
+    color: white;
+    text-align: center;
+    font-family: sans-serif;
+    margin-bottom: 5px;
+    overflow: hidden;
+}
+
+.container6{
+    height:50px;
+    width: 50px;
+    border-radius: 40 50 40 50;
+    border: 2;
+    border-color: coral;
+    background-color: cornsilk;
+}
+
+    </style>
+
+    
+ 
+
+<div class="container4">
+       <div class="row">
+          
+            
+            <div class="col-4" style="background-color:brown;">
+                {% include 'dashboard/article.html' %}
+                
+           </div>
+               
+               <div class="col-8"  id ="cntr-8" style="background-color:black;color: chartreuse;text-align: center;">
+                <br><br><br>
+                
+                <br>
+                <a href="{% url 'register'%}" ><h1>Create an Account?</h1></a>
+                <br><br><br>
+                <h1>Create your own Article</h1>
+                <br><br><br>
+                
+                    
+                <button class= "container6"  id="blue8" onclick="myFunction1()" style="background-color: darkblue;"></button>
+                <button class= "container6" id="yellow" onclick="myFunction2()" style="background-color:darkgoldenrod;"></button>
+                <button class= "container6" id="green" onclick="myFunction3()" style="background-color:green;"></button>
+                <button class= "container6" id="red" onclick="myFunction4()" style="background-color:red;"></button>
+                <br><br><br>
+
+               <h1> Already have an account? <a href="{% url 'login' %}">Login</a></h1>
+        </div>
+           
+       </div>
+    
+    </div>
+<script>
+    function myFunction1() {
+       
+               document.getElementById("cntr-8").style.backgroundColor = "blue";
+    }
+    function myFunction2() {
+       
+          document.getElementById("cntr-8").style.backgroundColor = "darkgoldenrod";
+}
+function myFunction3() {
+   
+       document.getElementById("cntr-8").style.backgroundColor = "green";
+}
+function myFunction4() {
+       
+   
+       document.getElementById("cntr-8").style.backgroundColor = "red";
+}
+      </script>
+   
+   
+
+
+{% endblock %}
+
